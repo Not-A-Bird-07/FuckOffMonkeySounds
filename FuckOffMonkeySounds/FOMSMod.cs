@@ -8,8 +8,9 @@ using System.Reflection;
 #endif
 
 #if MELONLOADER
-[assembly: MelonInfo(typeof(FOMSMod), "FuckOffMonkeySounds", "1.1.0", "Luna")]
+[assembly: MelonInfo(typeof(FOMSMod), "FuckOffMonkeySounds", "1.1.1", "Luna")]
 [assembly: MelonGame("Another Axiom", "Gorilla Tag")]
+
 #endif
 namespace FuckOffMonkeySounds
 {
@@ -17,8 +18,8 @@ namespace FuckOffMonkeySounds
     public class FOMSMod : MelonMod { }
 #else
     [BepInPlugin("luna.fuckoffmonkeysounds", "FuckOffMonkeySounds", "1.1.0")]
-    public class FOMSMod : BaseUnityPlugin {
-        
+    public class FOMSMod : BaseUnityPlugin
+    {
         void Start()
         {
             HarmonyLib.Harmony harmony = new HarmonyLib.Harmony("luna.fuckoffmonkeysounds");
@@ -26,7 +27,8 @@ namespace FuckOffMonkeySounds
         }
     }
 #endif
-    [HarmonyPatch(typeof(VRRig), "LateUpdate")]
+
+    [HarmonyPatch(typeof(VRRig), "Awake")]
     static class RigPatch
     {
         static void Prefix(VRRig __instance)
